@@ -45,6 +45,7 @@
     "currency-symbol-map": "5.1.0",
     "formik": "2.4.6",
     "i18next": "24.2.3",
+    "i18next-resources-to-backend": "^1.2.1",
     "micromatch": "4.0.8",
     "mixpanel-browser": "2.62.0",
     "next": "15.2.4",

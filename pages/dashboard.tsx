@@ -1,8 +1,8 @@
-"use client";
-
 import { Loading } from '@/components/shared';
 import useTeams from 'hooks/useTeams';
-import { useRouter } from 'next/navigation';
+import { GetServerSidePropsContext } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import type { NextPageWithLayout } from 'types';
 
@@ -24,5 +24,13 @@ const Dashboard: NextPageWithLayout = () => {
 
   return <Loading />;
 };
+
+export async function getStaticProps({ locale }: GetServerSidePropsContext) {
+  return {
+    props: {
+      ...(locale ? await serverSideTranslations(locale, ['common']) : {}),
+    },
+  };
+}
 
 export default Dashboard;

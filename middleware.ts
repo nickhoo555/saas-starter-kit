@@ -1,7 +1,7 @@
 import micromatch from 'micromatch';
+import { getToken } from 'next-auth/jwt';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { getToken } from 'next-auth/jwt';
 
 import env from './lib/env';
 
@@ -81,7 +81,7 @@ export default async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const redirectUrl = new URL('/auth/signin', req.url);
+  const redirectUrl = new URL('/auth/login', req.url);
   redirectUrl.searchParams.set('callbackUrl', encodeURI(req.url));
 
   // JWT strategy
@@ -135,5 +135,5 @@ export default async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|api/auth/session|favicon.ico).*)'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|api/auth/session).*)'],
 };

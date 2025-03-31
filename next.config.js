@@ -5,6 +5,9 @@ const { withSentryConfig } = require('@sentry/nextjs');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  experimental: {
+    // appDir设置为true已经不再需要，因为Next.js 15已默认启用
+  },
   images: {
     remotePatterns: [
       {
